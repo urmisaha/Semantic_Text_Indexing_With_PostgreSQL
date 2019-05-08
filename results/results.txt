@@ -1,0 +1,108 @@
+1. Similarity function:
+
+> SELECT title from documents where to_tsvector('document_config_wn', description) @@ to_tsquery('document_config_wn','actor');
+
+WordNet:
+Time(Without Indexing): 2.9 secs
+Time(With Indexing): 2.1 secs
+14 rows retrieved
+
+"Document155"
+"Document133"
+"Document602"
+"Document761"
+"Document1503"
+"Document2181"
+"Document2503"
+"Document4007"
+"Document4098"
+"Document4702"
+"Document4950"
+"Document5199"
+"Document5206"
+"Document5222"
+
+FastText:
+Time(Without Indexing): 3.1 secs
+Time(With Indexing): 2.7 secs
+40 rows retrieved
+
+GloVe:
+Time(Without Indexing): 3.1 secs
+Time(With Indexing): 2.5 secs
+7 rows retrieved
+
+"Document133"
+"Document761"
+"Document1503"
+"Document2181"
+"Document4098"
+"Document5199"
+"Document5222"
+
+Similarity dictionary:
+visitation actor
+purely actor
+correlation, actor
+science-society actor
+unexpected actor
+civil actor
+Feedback actor
+multi-disciplinary actor
+considerations, actor
+MCFOA actor
+
+===
+
+2. Clustering
+
+> SELECT title from documents where to_tsvector('document_config_ft', description) @@ to_tsquery('document_config_ft','multijunction');
+
+K-Means with FastText:
+Time(Without Indexing): 3.4 secs
+13 rows retrieved.
+
+Total query runtime: 3.7 secs
+4 rows retrieved.
+"Document1879"
+"Document1908"
+"Document3190"
+"Document3814"
+
+Similarity dictionary:
+multijunction multijunction
+mycelial multijunction
+Eckhard multijunction
+
+
+
+> SELECT title from documents where to_tsvector('document_config_ft', description) @@ to_tsquery('document_config_ft','actor');
+
+Time(Without Indexing): 2.2 secs
+Time(With Indexing): 1.4 secs
+11 rows retrieved.
+
+"Document133"
+"Document761"
+"Document1503"
+"Document1890"
+"Document2181"
+"Document3797"
+"Document3801"
+"Document3802"
+"Document4098"
+"Document5199"
+"Document5222"
+
+Similarity dictionary:
+actor actor
+IGH actor
+RDT actor
+
+*Indexing has been done by GIN index
+
+1. lucene
+2. elasticsearch
+3. LSH
+4. GIN Index
+5. time complexities
