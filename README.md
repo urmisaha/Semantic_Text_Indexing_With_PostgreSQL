@@ -29,7 +29,7 @@ Semantic_Text_Indexing_With_PostgreSQL
 |_ other folders...
 ```
 
-### Steps to run project
+### Steps to run the project
 1. Create table documents:
 create table documents
 	(title		varchar(20), 
